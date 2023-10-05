@@ -42,7 +42,19 @@ $user_data = check_login($con);
         </div>
         <div class="hidden lg:flex lg:flex-1 justify-center lg:gap-x-12" id="openMenuItems">
           <a href="../../index.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
-          <a href="../php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
+          <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-sm font-semibold leading-6 text-gray-900 hover:underline" type="button">Booking</button>
+
+          <!-- Dropdown menu -->
+          <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+            <ul class="py-2 text-sm text-gray-900" aria-labelledby="dropdownDefaultButton">
+              <li>
+                <a href="../php/bookingPage.php" class="block px-4 py-2 hover:underline">Flight Booking</a>
+              </li>
+              <li>
+                <a href="../php/hotelBookingPage.php" class="block px-4 py-2 hover:underline">Hotel Booking</a>
+              </li>
+            </ul>
+          </div>
           <a href="../php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
           <a href="../php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
         </div>
@@ -67,7 +79,8 @@ $user_data = check_login($con);
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
                 <a href="../../index.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
-                <a href="../php/bookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
+                <a href="../php/bookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Flight Booking</a>
+                <a href="../php/hotelBookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Hotel Booking</a>
                 <a href="../php/statusPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
                 <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
               </div>
@@ -259,6 +272,7 @@ $user_data = check_login($con);
 
     <script src="../JS/script.js"></script>
     <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/tabs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
 
 </html>
