@@ -17,6 +17,7 @@ $user_data = check_login($con);
   <title>Fly - Status</title>
   <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../css/tailwind.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </head>
 

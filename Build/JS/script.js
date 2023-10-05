@@ -340,6 +340,7 @@ function bookTicket(flight_id, passenger_count) {
         var response = JSON.parse(xhr.responseText);
         if (response.success) {
           alert("Booking successful!");
+          window.location.href = "hotelBookingPage.php";
         } else {
           alert("Booking failed. Please try again.");
         }
