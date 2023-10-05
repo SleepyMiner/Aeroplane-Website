@@ -68,3 +68,38 @@ CREATE TABLE `reservations` (
   `flight_id` varchar(50) NOT NULL,
   `passenger_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+---Hotel Table---
+
+CREATE TABLE Hotels (
+    hotel_id INT PRIMARY KEY,
+    hotel_name VARCHAR(50),
+    location VARCHAR(20),
+    room_type VARCHAR(20),
+    room_number INT,
+    price_per_night INT,
+    available_date DATE
+);
+
+INSERT INTO Hotels (hotel_id, hotel_name, location, room_type, room_number, price_per_night, available_date)
+VALUES
+    (1, 'Hotel A', 'Delhi', 'Single', 101, 3000, '2023-10-10'),
+    (2, 'Hotel B', 'Bangalore', 'Double', 201, 4000, '2023-10-12'),
+    (3, 'Hotel C', 'Hyderabad', 'Suite', 301, 6000, '2023-10-11'),
+    (4, 'Hotel D', 'Chennai', 'Single', 102, 2500, '2023-10-09'),
+    (5, 'Hotel E', 'Kolkata', 'Double', 202, 3500, '2023-10-14'),
+    (6, 'Hotel F', 'Mumbai', 'Suite', 302, 8000, '2023-10-16'),
+    (7, 'Hotel G', 'Delhi', 'Single', 103, 2800, '2023-10-13'),
+    (8, 'Hotel H', 'Bangalore', 'Double', 203, 3800, '2023-10-15'),
+    (9, 'Hotel I', 'Hyderabad', 'Suite', 303, 5500, '2023-10-17'),
+    (10, 'Hotel J', 'Kolkata', 'Deluxe', 401, 4200, '2023-10-19'),
+    (11, 'Hotel K', 'Mumbai', 'Deluxe', 402, 4700, '2023-10-21'),
+    (12, 'Hotel L', 'Delhi', 'Single', 104, 3200, '2023-10-20'),
+    (13, 'Hotel M', 'Bangalore', 'Double', 204, 4200, '2023-10-22'),
+    (14, 'Hotel N', 'Hyderabad', 'Deluxe', 403, 5000, '2023-10-23'),
+    (15, 'Hotel O', 'Chennai', 'Deluxe', 404, 3800, '2023-10-18'),
+    (16, 'Hotel P', 'Kolkata', 'Single', 105, 2800, '2023-10-24'),
+    (17, 'Hotel Q', 'Mumbai', 'Double', 205, 4100, '2023-10-26'),
+    (18, 'Hotel R', 'Delhi', 'Deluxe', 405, 5200, '2023-10-25'),
+    (19, 'Hotel S', 'Bangalore', 'Suite', 304, 6500, '2023-10-27'),
+    (20, 'Hotel T', 'Hyderabad', 'Deluxe', 406, 4800, '2023-10-28');
