@@ -46,19 +46,7 @@ include_once("functions.php");
                     <a href="../../index.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Back to Home</a>
                 </div>
                 <?php
-                if (isset($_SESSION['username'])) {
-                    echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
-                    echo '<span class="text-sm font-semibold leading-6 text-gray-900 hover:underline mx-5">' . $_SESSION['username'] . '</span>';
-                    echo '<form action="./Build/php/logout.php" method="post">';
-                    echo '<input type="submit" value="Logout" class="hover:underline">';
-                    echo '</form>';
-                    echo '</div>';
-                } else {
-                    // If the user is not logged in, show the login button
-                    echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
-                    echo '<a href="./Build/php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in<span aria-hidden="true">&rarr;</span></a>';
-                    echo '</div>';
-                }
+                show_login();
                 ?>
             </nav>
             <!-- Mobile menu, show/hide based on menu open state. -->
@@ -159,6 +147,7 @@ include_once("functions.php");
                                     <option value="Single">Single</option>
                                     <option value="Double">Double</option>
                                     <option value="Deluxe">Deluxe</option>
+                                    <option value="Deluxe">Suite</option>
                                 </select>
                             </div>
                         </div>
