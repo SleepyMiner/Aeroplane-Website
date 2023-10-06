@@ -179,7 +179,6 @@ include_once("functions.php");
                 <!----Hotel Card Showing results--->
                 <div class="w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-5">
                     <div class="flex">
-                        <img class="w-1/3" src="../images/hotelResultCard.jpg" alt="hotel image">
                         <div class="w-2/3 p-4">
                             <h2 class="text-xl font-semibold mb-2" id="hotel_name">Hotel Name</h2>
                             <p class="text-gray-900" id="hotel_address">Address</p>
@@ -191,9 +190,9 @@ include_once("functions.php");
                                 <span class="text-yellow-500">☆</span>
                             </div>
                             <div class="flex mb-2">
-                                <span class="mr-2"><i class="fa fa-wifi mr-1" aria-hidden="true"></i>Free Wi-Fi</span>
-                                <span class="mr-2"><i class="fa fa-camera mr-1" aria-hidden="true"></i>CCTV Camera</span>
-                                <span class="mr-2"><i class="fa fa-television mr-1" aria-hidden="true"></i>TV</span>
+                                <span class="mr-4"><i class="fa fa-wifi mr-1" aria-hidden="true"></i>Free Wi-Fi</span>
+                                <span class="mr-4"><i class="fa fa-camera mr-1" aria-hidden="true"></i>CCTV Camera</span>
+                                <span class="mr-4"><i class="fa fa-television mr-1" aria-hidden="true"></i>TV</span>
                             </div>
                             <div class="flex mb-2">
                                 <p><i class="fa fa-info-circle mr-1" aria-hidden="true" id="description"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti accusamus consectetur explicabo iusto nihil eum.</p>
