@@ -379,6 +379,59 @@ function checkLoginAndBook() {
   xhr.send();
 }
 
+//Hotel Ticket Booking
+function bookRoom() {
+  var origin = document.getElementById("origin").value;
+  var start_date = document.getElementById("start_date").value;
+  var end_date = document.getElementById("end_date").value;
+  var adults = document.getElementById("adults").value;
+  var roomType = document.getElementById("roomType").value;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./bookHotelTicket.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  var params =
+    "origin=" +
+    origin +
+    "&start_date=" +
+    start_date +
+    "&end_date=" +
+    end_date +
+    "&adults=" +
+    adults +
+    "&roomType=" +
+    roomType;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var hotels = JSON.parse(xhr.responseText);
+      displayHotels(hotels);
+    }
+  };
+
+  xhr.send(params);
+}
+
+//Display Hotels
+function displayHotels(hotels) {
+  if (hotels.length > 0) {
+    var hotel = hotels[0];
+    document.getElementById("results_content").classList.remove("hidden");
+
+    document.getElementById("flightArrivalTime").textContent = flight.arrival;
+    //document.getElementById("flightArrivalDate").textContent =
+    //flight.arrival_day;
+    document.getElementById("flightDepartTime").textContent = flight.depart;
+    // document.getElementById("flightDepartDate").textContent = flight.depart_day;
+    document.getElementById("flightDestination").textContent =
+      flight.destination;
+    document.getElementById("flightId").textContent = flight.flight_id;
+    document.getElementById("flightOrigin").textContent = flight.origin;
+    document.getElementById("flightPrice").textContent = "Rs " + flight.price;
+  }
+}
+
 // scroll to booking form
 function scrollToBookingForm(event) {
   event.preventDefault();
