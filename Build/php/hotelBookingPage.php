@@ -111,20 +111,27 @@ include_once("functions.php");
                 <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
                 <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" id="bookRoom" onsubmit="return bookRoom(); return false">
                     <div class="p-6">
+                        <div class="flex-1 max-xs:flex-col gap-4">
+                            <div class="mt-4 relative ">
+                                <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
+                                    <i class="fa fa-location-arrow"></i>
+                                </div>
+                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Search by city, hotel, or neighborhood" type="text" id="origin" required>
+                            </div>
+                        </div>
                         <div class="flex max-xs:flex-col gap-4 mt-4">
                             <div class="flex-1 relative">
                                 <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="From" id="depart_date" onfocus="(this.type='date')" required>
+                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="From" id="start_date" onfocus="(this.type='date')" required>
                             </div>
                             <div class="flex-1 relative">
                                 <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="To" id="depart_date" onfocus="(this.type='date')" required>
+                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="To" id="end_date" onfocus="(this.type='date')" required>
                             </div>
-
                         </div>
                         <div class="flex max-xs:flex-col gap-4 mt-4">
                             <div class="flex-1 relative">
@@ -153,48 +160,39 @@ include_once("functions.php");
                         </div>
                     </div>
                     <div>
-                        <button class="bg-gray-800 uppercase py-4 w-full text-white text-xs tracking-widest">Search Flights</button>
+                        <button class="bg-gray-800 uppercase py-4 w-full text-white text-xs tracking-widest">Search Hotels</button>
                     </div>
                 </form>
                 </p>
 
-                <!----Flight Card Showing results--->
-                <div class="p-10 hidden" id="results_content">
-                    <div class="max-w-full  bg-white flex flex-col rounded overflow-hidden shadow-lg">
-                        <div class="mt-2 flex sm:flex-row mx-6 sm:justify-between flex-wrap ">
-                            <div class="flex flex-row place-items-center p-2">
-                                <img alt="#" class="w-10 h-10" src="../images/flightCardLogo.jpg" style="opacity: 1; transform-origin: 0% 50% 0px; transform: none;" />
-                                <div class="flex flex-col ml-2">
-                                    <p class="text-xs text-gray-500 font-bold" id="flightId">
-                                    </p>
-                                </div>
+                <!----Hotel Card Showing results--->
+                <div class="w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-5">
+                    <div class="flex">
+                        <img class="w-1/3" src="../images/hotelResultCard.jpg" alt="hotel image">
+                        <div class="w-2/3 p-4">
+                            <h2 class="text-xl font-semibold mb-2" id="hotel_name">Hotel Name</h2>
+                            <p class="text-gray-900" id="hotel_address">Address</p>
+                            <div class="flex mb-2">
+                                <span class="text-yellow-500">★</span>
+                                <span class="text-yellow-500">★</span>
+                                <span class="text-yellow-500">★</span>
+                                <span class="text-yellow-500">★</span>
+                                <span class="text-yellow-500">☆</span>
                             </div>
-                            <div class="flex flex-col p-2">
-                                <p class="font-bold" id="flightDepartTime"></p>
-                                <p class="text-gray-500" id="flightOrigin"></p>
+                            <div class="flex mb-2">
+                                <span class="mr-2"><i class="fa fa-wifi mr-1" aria-hidden="true"></i>Free Wi-Fi</span>
+                                <span class="mr-2"><i class="fa fa-camera mr-1" aria-hidden="true"></i>CCTV Camera</span>
+                                <span class="mr-2"><i class="fa fa-television mr-1" aria-hidden="true"></i>TV</span>
                             </div>
-                            <div class="flex flex-col flex-wrap p-2">
-                                <p class="font-bold" id="flightArrivalTime"></p>
-                                <p class="text-gray-500" id="flightDestination"></p>
+                            <div class="flex mb-2">
+                                <p><i class="fa fa-info-circle mr-1" aria-hidden="true" id="description"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti accusamus consectetur explicabo iusto nihil eum.</p>
                             </div>
-                        </div>
-                        <div class="mt-4 bg-gray-100 flex flex-row flex-wrap md:flex-nowrap justify-between items-baseline">
-                            <div class="flex mx-6 py-4 flex-row flex-wrap">
-                                <svg class="w-12 h-10 p-2 mx-2 self-center bg-gray-400 rounded-full fill-current text-white" viewBox="0 0 64 64" pointer-events="all" aria-hidden="true" role="presentation">
-                                    <path d="M43.389 38.269L29.222 61.34a1.152 1.152 0 01-1.064.615H20.99a1.219 1.219 0 01-1.007-.5 1.324 1.324 0 01-.2-1.149L26.2 38.27H11.7l-3.947 6.919a1.209 1.209 0 01-1.092.644H1.285a1.234 1.234 0 01-.895-.392l-.057-.056a1.427 1.427 0 01-.308-1.036L1.789 32 .025 19.656a1.182 1.182 0 01.281-1.009 1.356 1.356 0 01.951-.448l5.4-.027a1.227 1.227 0 01.9.391.85.85 0 01.2.252L11.7 25.73h14.5L19.792 3.7a1.324 1.324 0 01.2-1.149A1.219 1.219 0 0121 2.045h7.168a1.152 1.152 0 011.064.615l14.162 23.071h8.959a17.287 17.287 0 017.839 1.791Q63.777 29.315 64 32q-.224 2.685-3.807 4.478a17.282 17.282 0 01-7.84 1.793h-9.016z"></path>
-                                </svg>
-                                <div class="text-sm mx-2 flex flex-col">
-                                    <p class="">Standard Ticket</p>
-                                    <p class="font-bold" id="flightPrice"></p>
-                                    <p class="text-xs text-gray-500">Price per adult</p>
-                                </div>
-                                <button class="w-32 h-11 rounded flex border-solid border bg-white mx-2 justify-center place-items-center">
-                                    <div onclick="checkLoginAndBook()">Book</div>
-                                </button>
-                            </div>
+                            <div class="text-xl font-semibold mb-2" id="price"></div>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

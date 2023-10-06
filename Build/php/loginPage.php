@@ -42,11 +42,11 @@ include("functions.php");
         </div>
         <div class="hidden lg:flex lg:gap-x-12 " id="openMenuItems">
           <a href="../../index.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
-          <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-sm font-semibold leading-6 text-gray-900 hover:underline" type="button">Booking</button>
-
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-sm font-semibold leading-6 text-gray-900 hover:underline" type="button">Booking
+          </button>
           <!-- Dropdown menu -->
-          <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-            <ul class="py-2 text-sm text-gray-900" aria-labelledby="dropdownDefaultButton">
+          <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+            <ul class="py-2 text-sm text-gray-900" aria-labelledby="dropdownHoverButton">
               <li>
                 <a href="../php/bookingPage.php" class="block px-4 py-2 hover:underline">Flight Booking</a>
               </li>
@@ -165,6 +165,7 @@ include("functions.php");
 
 
     <script src="../JS/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
 
 </html>
