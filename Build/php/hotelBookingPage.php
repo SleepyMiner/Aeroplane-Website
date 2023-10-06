@@ -111,7 +111,8 @@ include_once("functions.php");
 
     <!----HOTEL BOOKING FORM--->
     <div class="w-2/3 mx-auto py-32 sm:py-48 lg:py-56" id="hotel-form">
-        <div class="relative block text-center mb-8" id="booking-form-section">
+        <p class="mb-10" id="booking-form-section"></p>
+        <div class="relative block text-center mb-8">
             <span class="mx-auto text-3xl font-bold">Hotel Reservation</span>
         </div>
 
