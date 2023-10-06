@@ -198,7 +198,7 @@ include_once("functions.php");
                                 <p><i class="fa fa-info-circle mr-1" aria-hidden="true" id="description"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti accusamus consectetur explicabo iusto nihil eum.</p>
                             </div>
                             <div class="text-xl font-semibold mb-2" id="price"></div>
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book Now</button>
+                            <button class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">Book</button>
                         </div>
                     </div>
                 </div>
