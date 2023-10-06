@@ -378,3 +378,12 @@ function checkLoginAndBook() {
 
   xhr.send();
 }
+
+// scroll to booking form
+function scrollToBookingForm(event) {
+  event.preventDefault();
+  const bookingFormSection = document.getElementById("booking-form-section");
+  bookingFormSection.scrollIntoView({
+    behavior: "smooth",
+  });
+}
