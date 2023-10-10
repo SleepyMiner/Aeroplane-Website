@@ -45,13 +45,13 @@ include_once("functions.php");
           <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-sm font-semibold leading-6 text-gray-900 hover:underline" type="button">Booking
           </button>
           <!-- Dropdown menu -->
-          <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-            <ul class="py-2 text-sm text-gray-900" aria-labelledby="dropdownHoverButton">
+          <div id="dropdownHover" class="z-10 hidden bg-white bg-opacity-50 divide-y divide-gray-100 rounded-lg shadow">
+            <ul class="flex list-none py-2 sm:py-4 md:py-3 lg:py-2 xl:py-1 text-sm text-gray-900" aria-labelledby="dropdownHoverButton">
               <li>
-                <a href="../php/bookingPage.php" class="block px-4 py-2 hover:underline">Flight Booking</a>
+                <a href="../php/bookingPage.php" class="block px-2 py-1 hover:underline">Flight</a>
               </li>
               <li>
-                <a href="../php/hotelBookingPage.php" class="block px-4 py-2 hover:underline">Hotel Booking</a>
+                <a href="../php/hotelBookingPage.php" class="block px-2 py-1 hover:underline">Hotel</a>
               </li>
             </ul>
           </div>
