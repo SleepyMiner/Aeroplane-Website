@@ -331,7 +331,6 @@ function bookTicket(flight_id, passenger_count) {
   xhr.open("POST", "./bookTicket.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  // Assuming user is logged in and user_id is available in session
   var params = "flight_id=" + flight_id + "&passenger_count=" + passenger_count;
 
   xhr.onreadystatechange = function () {
@@ -379,21 +378,23 @@ function checkLoginAndBook() {
   xhr.send();
 }
 
-//Hotel Ticket Booking
-function bookRoom() {
-  var origin = document.getElementById("origin").value;
-  var start_date = document.getElementById("start_date").value;
-  var end_date = document.getElementById("end_date").value;
+//Fetching Hotel Tickets
+function fetchRoom(event) {
+  event.preventDefault();
+  console.log("Form Submitted");
+  var location = document.getElementById("location").innerHTML;
+  var start_date = document.getElementById("start_date").innerHTML;
+  var end_date = document.getElementById("end_date").innerHTML;
   var adults = document.getElementById("adults").value;
   var roomType = document.getElementById("roomType").value;
 
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "./bookHotelTicket.php", true);
+  xhr.open("POST", "./fetchHotels.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   var params =
-    "origin=" +
-    origin +
+    "location=" +
+    location +
     "&start_date=" +
     start_date +
     "&end_date=" +
@@ -406,7 +407,8 @@ function bookRoom() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var hotels = JSON.parse(xhr.responseText);
-      displayHotels(hotels);
+      console.log("Debug 1");
+      displayHotelResults(hotels);
     }
   };
 
@@ -414,21 +416,16 @@ function bookRoom() {
 }
 
 //Display Hotels
-function displayHotels(hotels) {
+function displayHotelResults(hotels) {
+  console.log(hotels);
   if (hotels.length > 0) {
     var hotel = hotels[0];
-    document.getElementById("results_content").classList.remove("hidden");
-
-    document.getElementById("flightArrivalTime").textContent = flight.arrival;
-    //document.getElementById("flightArrivalDate").textContent =
-    //flight.arrival_day;
-    document.getElementById("flightDepartTime").textContent = flight.depart;
-    // document.getElementById("flightDepartDate").textContent = flight.depart_day;
-    document.getElementById("flightDestination").textContent =
-      flight.destination;
-    document.getElementById("flightId").textContent = flight.flight_id;
-    document.getElementById("flightOrigin").textContent = flight.origin;
-    document.getElementById("flightPrice").textContent = "Rs " + flight.price;
+    //document.getElementById("hotel_results").classList.remove("hidden");
+    console.log("Debug 2");
+    document.getElementById("hotel_name").textContent = hotel.hotel_name;
+    document.getElementById("hotel_address").textContent = hotel.hotel_address;
+    document.getElementById("description").textContent = hotel.description;
+    document.getElementById("price").textContent = "Rs " + hotel.price;
   }
 }
 
@@ -439,4 +436,62 @@ function scrollToBookingForm(event) {
   bookingFormSection.scrollIntoView({
     behavior: "smooth",
   });
+}
+
+//Booking Hotel Ticket
+function bookHotelTicket(hotel_name, room_type, hotel_address, adults) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./bookHotelTicket.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  var params =
+    "hotel_name=" +
+    hotel_name +
+    "&room_type=" +
+    room_type +
+    "&hotel_address=" +
+    hotel_address +
+    "&adults=" +
+    adults;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.success) {
+          alert("Booking successful!");
+        } else {
+          alert("Booking failed. Please try again.");
+        }
+      } else {
+        alert("Error: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send(params);
+}
+
+//Checking login before room booking
+function checkLoginAndHotelBooking() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "./check_login.php", true);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var response = JSON.parse(xhr.responseText);
+
+      if (response.isLoggedIn) {
+        bookHotelTicket(
+          document.getElementById("hotel_name").innerHTML,
+          document.getElementById("room_type").value,
+          document.getElementById("hotel_address").innerHTML,
+          document.getElementById("adults").value
+        );
+      } else {
+        alert("You need to log in before booking a ticket.");
+        window.location.href = "loginPage.php";
+      }
+    }
+  };
 }

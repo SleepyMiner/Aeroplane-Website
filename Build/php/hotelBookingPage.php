@@ -119,14 +119,14 @@ include_once("functions.php");
         <div data-tab-content="" class="p-5">
             <div class="block opacity-100" id="app" role="tabpanel">
                 <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-                <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" id="bookRoom" onsubmit="return bookRoom(); return false">
+                <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" id="bookRoom" onsubmit="return fetchRoom(event); return false">
                     <div class="p-6">
                         <div class="flex-1 max-xs:flex-col gap-4">
                             <div class="mt-4 relative ">
                                 <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                                     <i class="fa fa-location-arrow"></i>
                                 </div>
-                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Where are you staying?" type="text" id="location">
+                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Where are you staying?" type="text" id="location" name="location">
                             </div>
                         </div>
                         <div class="flex max-xs:flex-col gap-4 mt-4">
@@ -134,13 +134,13 @@ include_once("functions.php");
                                 <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="From" id="start_date" onfocus="(this.type='date')" required>
+                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="From" id="start_date" name="start_date" onfocus="(this.type='date')" required>
                             </div>
                             <div class="flex-1 relative">
                                 <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="To" id="end_date" onfocus="(this.type='date')" required>
+                                <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="To" id="end_date" name="end_date" onfocus="(this.type='date')" required>
                             </div>
                         </div>
                         <div class="flex max-xs:flex-col gap-4 mt-4">
@@ -171,13 +171,12 @@ include_once("functions.php");
                     </div>
                     <div>
                         <button class="bg-pink-700 uppercase py-4 w-full text-white text-xs tracking-widest">Search Hotels</button>
-
                     </div>
                 </form>
                 </p>
 
                 <!----Hotel Card Showing results--->
-                <div class="w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-5">
+                <div class="w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-5" id="hotel_results">
                     <div class="flex">
                         <div class="w-2/3 p-4">
                             <h2 class="text-xl font-semibold mb-2" id="hotel_name">Hotel Name</h2>
@@ -198,7 +197,7 @@ include_once("functions.php");
                                 <p><i class="fa fa-info-circle mr-1" aria-hidden="true" id="description"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti accusamus consectetur explicabo iusto nihil eum.</p>
                             </div>
                             <div class="text-xl font-semibold mb-2" id="price"></div>
-                            <button class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">Book</button>
+                            <button class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded" onclick="checkLoginAndHotelBooking()">Book</button>
                         </div>
                     </div>
                 </div>
