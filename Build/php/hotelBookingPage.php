@@ -196,7 +196,7 @@ include_once("functions.php");
                                 <p><i class="fa fa-info-circle mr-1" aria-hidden="true" id="description"></i></p>
                             </div>
                             <div class="text-xl font-semibold mb-2" id="price"></div>
-                            <button class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded" onclick="checkLoginAndHotelBooking()">Book</button>
+                            <button class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 text-center rounded" onclick="checkLoginAndHotelBooking()">Book</button>
                         </div>
                     </div>
                 </div>

@@ -402,7 +402,7 @@ function fetchRoom(event) {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var data = JSON.parse(xhr.responseText);
 
-      console.log(data);
+      //console.log(data);
       displayHotelResults(data);
 
       //alert(data.message);
@@ -471,17 +471,18 @@ function bookHotelTicket(hotel_name, room_type, hotel_address, adults) {
 
 //Checking login before room booking
 function checkLoginAndHotelBooking() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "./check_login.php", true);
-
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      var response = JSON.parse(xhr.responseText);
-
-      if (response.isLoggedIn) {
+  fetch("./check_login.php")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.isLoggedIn) {
         bookHotelTicket(
           document.getElementById("hotel_name").innerHTML,
-          document.getElementById("room_type").value,
+          document.getElementById("roomType").value,
           document.getElementById("hotel_address").innerHTML,
           document.getElementById("adults").value
         );
@@ -489,6 +490,6 @@ function checkLoginAndHotelBooking() {
         alert("You need to log in before booking a ticket.");
         window.location.href = "loginPage.php";
       }
-    }
-  };
+    })
+    .catch((error) => console.error("Error:", error));
 }
