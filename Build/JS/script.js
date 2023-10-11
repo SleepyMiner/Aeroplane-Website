@@ -381,34 +381,31 @@ function checkLoginAndBook() {
 //Fetching Hotel Tickets
 function fetchRoom(event) {
   event.preventDefault();
-  console.log("Form Submitted");
-  var location = document.getElementById("location").innerHTML;
-  var start_date = document.getElementById("start_date").innerHTML;
-  var end_date = document.getElementById("end_date").innerHTML;
-  var adults = document.getElementById("adults").value;
+
+  var location = document.getElementById("location").value;
+  var start_date = document.getElementById("start_date").value;
   var roomType = document.getElementById("roomType").value;
 
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "./fetchHotels.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
+  var url = "fetchHotels.php";
   var params =
     "location=" +
     location +
     "&start_date=" +
     start_date +
-    "&end_date=" +
-    end_date +
-    "&adults=" +
-    adults +
     "&roomType=" +
     roomType;
+  xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
-      var hotels = JSON.parse(xhr.responseText);
-      console.log("Debug 1");
-      displayHotelResults(hotels);
+      var data = JSON.parse(xhr.responseText);
+
+      console.log(data);
+      displayHotelResults(data);
+
+      //alert(data.message);
     }
   };
 
@@ -416,16 +413,16 @@ function fetchRoom(event) {
 }
 
 //Display Hotels
-function displayHotelResults(hotels) {
-  console.log(hotels);
-  if (hotels.length > 0) {
-    var hotel = hotels[0];
-    //document.getElementById("hotel_results").classList.remove("hidden");
+function displayHotelResults(data) {
+  if (data.length > 0) {
+    var hotel = data[0];
+    document.getElementById("hotel_results").classList.remove("hidden");
     console.log("Debug 2");
     document.getElementById("hotel_name").textContent = hotel.hotel_name;
     document.getElementById("hotel_address").textContent = hotel.hotel_address;
     document.getElementById("description").textContent = hotel.description;
-    document.getElementById("price").textContent = "Rs " + hotel.price;
+    document.getElementById("price").textContent =
+      "Rs " + hotel.price_per_night;
   }
 }
 

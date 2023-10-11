@@ -3,15 +3,14 @@ include("connection.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $location = $_POST['location'];
-    $start_date = $_POST['start_date'];
-    $end_date = $_POST['end_date'];
-    $adults = $_POST['adults'];
-    $roomType = $_POST['roomType'];
+    $available_date = $_POST['start_date'];
+    $room_type = $_POST['roomType'];
+    //echo $location, $available_date, $room_type;
 
     $sql = "SELECT * FROM hotels 
             WHERE hotel_location = '$location' 
-            AND room_type = '$roomType' 
-            AND available_date = '$start_date'";
+            AND available_date = '$available_date' 
+            AND room_type = '$room_type'";
 
     $result = $con->query($sql);
 

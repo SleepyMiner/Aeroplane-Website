@@ -3,10 +3,9 @@ session_start();
 
 include("connection.php");
 include_once("functions.php");
-
-//$user_data = check_login($con);
-
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -176,11 +175,11 @@ include_once("functions.php");
                 </p>
 
                 <!----Hotel Card Showing results--->
-                <div class="w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-5" id="hotel_results">
+                <div class="w-2/3 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-5 hidden" id="hotel_results">
                     <div class="flex">
                         <div class="w-2/3 p-4">
-                            <h2 class="text-xl font-semibold mb-2" id="hotel_name">Hotel Name</h2>
-                            <p class="text-gray-900" id="hotel_address">Address</p>
+                            <h2 class="text-xl font-semibold mb-2" id="hotel_name"></h2>
+                            <p class="text-gray-900" id="hotel_address"></p>
                             <div class="flex mb-2">
                                 <span class="text-yellow-500">★</span>
                                 <span class="text-yellow-500">★</span>
@@ -194,7 +193,7 @@ include_once("functions.php");
                                 <span class="mr-4"><i class="fa fa-television mr-1" aria-hidden="true"></i>TV</span>
                             </div>
                             <div class="flex mb-2">
-                                <p><i class="fa fa-info-circle mr-1" aria-hidden="true" id="description"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti accusamus consectetur explicabo iusto nihil eum.</p>
+                                <p><i class="fa fa-info-circle mr-1" aria-hidden="true" id="description"></i></p>
                             </div>
                             <div class="text-xl font-semibold mb-2" id="price"></div>
                             <button class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded" onclick="checkLoginAndHotelBooking()">Book</button>
